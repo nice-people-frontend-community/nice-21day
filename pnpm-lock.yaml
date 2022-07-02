@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@ant-design/icons': ^4.7.0
+  '@types/node': ^18.0.0
   '@types/react': ^18.0.0
   '@types/react-dom': ^18.0.0
   antd: ^4.21.4
@@ -17,6 +18,7 @@ dependencies:
   umi: 4.0.5_typescript@4.7.4
 
 devDependencies:
+  '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
   babel-plugin-import: 1.13.5
@@ -1280,7 +1282,6 @@ packages:
 
   /@types/node/18.0.0:
     resolution: {integrity: sha512-cHlGmko4gWLVI27cGJntjs/Sj8th9aYwplmZFwmmgYQQvL5NUsgVJG7OddLvNfLqYS31KFN0s3qlaD9qCaxACA==}
-    dev: false
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
