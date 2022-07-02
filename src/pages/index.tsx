@@ -18,7 +18,8 @@ import {
   UploadProps,
 } from "antd/lib/upload";
 import { useMemo, useState } from "react";
-import templateImage from "../assets/bg.jpeg";
+import domtoimage from "dom-to-image";
+import templateImage from "../assets/template.jpeg";
 import styles from "./index.less";
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
@@ -60,6 +61,18 @@ export default function HomePage() {
       ...prevValues,
       ...restValues,
     }));
+  };
+
+  const handleCreateImage = (values: IFormValue) => {
+    const imgName = `${values.userName}_21天${values.trainingName}第${values.trainingNo}期.png`;
+    domtoimage
+      .toPng(document.getElementById("template")!, { quality: 1 })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        link.download = imgName;
+        link.href = dataUrl;
+        link.click();
+      });
   };
 
   const beforeUpload = (file: RcFile) => {
@@ -106,7 +119,7 @@ export default function HomePage() {
   return (
     <Row gutter={10} className={styles.content}>
       <Col span={12}>
-        <div className={styles.template}>
+        <div className={styles.template} id="template">
           {/* 模板图片 */}
           <img src={templateImage} />
           {/* 标题 */}
@@ -121,9 +134,10 @@ export default function HomePage() {
             </div>
             <div className={styles.user__name}>{formValues.userName}</div>
           </div>
+          {/* 打卡指标 */}
           <div className={styles.result}>
             {metrics.map((metric) => (
-              <div className={styles["result-metric"]}>
+              <div key={metric.label} className={styles["result-metric"]}>
                 <div className={styles["result-metric__value"]}>
                   {metric.value || 0}
                 </div>
@@ -137,8 +151,9 @@ export default function HomePage() {
       </Col>
       <Col span={8}>
         <Form<IFormValue>
-          onValuesChange={handleFormChange}
           labelCol={{ span: 6 }}
+          onValuesChange={handleFormChange}
+          onFinish={handleCreateImage}
         >
           <Divider orientation="left">训练营设置</Divider>
           <Form.Item
@@ -166,7 +181,7 @@ export default function HomePage() {
               style={{ width: "100%" }}
             />
           </Form.Item>
-          <Divider orientation="left">人员设置</Divider>
+          <Divider orientation="left">学员设置</Divider>
           <Form.Item
             name="userName"
             label="学员姓名"
