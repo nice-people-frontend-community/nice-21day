@@ -18,7 +18,7 @@ import {
   UploadProps,
 } from "antd/lib/upload";
 import { useMemo, useState } from "react";
-import domtoimage from "dom-to-image";
+import html2canvas from "html2canvas";
 import templateImage from "../assets/template.jpeg";
 import styles from "./index.less";
 
@@ -64,15 +64,15 @@ export default function HomePage() {
   };
 
   const handleCreateImage = (values: IFormValue) => {
-    const imgName = `${values.userName}_21天${values.trainingName}第${values.trainingNo}期.png`;
-    domtoimage
-      .toPng(document.getElementById("template")!, { quality: 1 })
-      .then(function (dataUrl) {
-        var link = document.createElement("a");
-        link.download = imgName;
-        link.href = dataUrl;
-        link.click();
-      });
+    const imgName = `${values.userName}_21天${values.trainingName}第${values.trainingNo}期.jpg`;
+    html2canvas(document.getElementById("template")!).then((canvas) => {
+      let img = document.createElement("a");
+      img.href = canvas
+        .toDataURL("image/jpeg")
+        .replace("image/jpeg", "image/octet-stream");
+      img.download = imgName;
+      img.click();
+    });
   };
 
   const beforeUpload = (file: RcFile) => {
