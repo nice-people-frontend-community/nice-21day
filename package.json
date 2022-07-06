@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "dev:web": "pnpm -C packages/nice-21day-web dev",
-    "build:web": "pnpm -C packages/nice-21day-web build",
     "dev:weapp": "pnpm -C packages/nice-21day-mini dev:weapp",
+    "build:web": "pnpm -C packages/nice-21day-web build",
     "build:weapp": "pnpm -C packages/nice-21day-web build:weapp"
   },
   "dependencies": {},
