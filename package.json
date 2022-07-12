@@ -2,13 +2,14 @@
   "name": "nice-21day",
   "private": true,
   "scripts": {
-    "dev:web": "pnpm -C packages/nice-21day-web dev",
-    "dev:weapp": "pnpm -C packages/nice-21day-mini dev:weapp",
-    "build:web": "pnpm -C packages/nice-21day-web build",
-    "build:weapp": "pnpm -C packages/nice-21day-web build:weapp"
+    "build:shared": "pnpm --filter=@nice-21day/shared build",
+    "dev:web": "pnpm --filter=@nice-21day/web dev",
+    "dev:weapp": "pnpm --filter=@nice-21day/mini dev:weapp",
+    "build:web": "pnpm --filter=@nice-21day/web build",
+    "build:weapp": "pnpm --filter=@nice-21day/mini build:weapp"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@types/node": "^18.0.0",
     "typescript": "^4.1.2"
   }
 }

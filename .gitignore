@@ -6,3 +6,6 @@ config/config.local.ts
 .umi-production
 dist
 .DS_Store
+deploy_versions/
+.temp/
+.rn_temp/

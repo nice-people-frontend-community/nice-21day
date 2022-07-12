@@ -1,0 +1,19 @@
+{
+  "name": "@nice-21day/shared",
+  "version": "1.0.0",
+  "description": "nice-21day-shared",
+  "author": "Anonymity94 <1176989591@qq.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "dependencies": {}
+}

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": false,
+    "declaration": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "pretty": true,
+    "outDir": "./dist",
+    "lib": ["esnext", "dom"],
+    "types": ["node"]
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "**/test", "dist"]
+}
