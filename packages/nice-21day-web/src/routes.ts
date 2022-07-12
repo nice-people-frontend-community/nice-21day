@@ -1,3 +1,5 @@
+import { MenuDataItem } from '@ant-design/pro-components';
+
 export default [
   {
     path: '/',
@@ -7,7 +9,25 @@ export default [
     name: '管理员',
     path: '/admin',
     icon: 'user',
-    component: './Admin',
+    hideChildrenInMenu: true,
+    routes: [
+      {
+        name: '管理员',
+        path: '/admin',
+        icon: 'user',
+        component: './Admin',
+      },
+      {
+        name: '新建管理员',
+        path: '/admin/create',
+        component: './Admin/Create',
+      },
+      {
+        name: '编辑管理员',
+        path: '/admin/update',
+        component: './Admin/Update',
+      },
+    ],
   },
   {
     name: '证书',
@@ -15,4 +35,4 @@ export default [
     icon: 'solution',
     component: './Certificate',
   },
-];
+] as MenuDataItem[];

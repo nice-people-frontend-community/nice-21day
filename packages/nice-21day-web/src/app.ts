@@ -1,5 +1,6 @@
 // 运行时配置
 
+import { BasicLayoutProps } from '@ant-design/pro-components';
 import { message } from 'antd';
 import { RequestConfig } from './.umi/exports';
 
@@ -9,7 +10,7 @@ import { RequestConfig } from './.umi/exports';
 //   return { name: '@umijs/max' };
 // }
 
-export const layout = () => {
+export const layout = (): BasicLayoutProps => {
   return {
     logo: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
     menu: {

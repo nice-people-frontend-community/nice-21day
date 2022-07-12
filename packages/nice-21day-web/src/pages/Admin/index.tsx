@@ -1,7 +1,9 @@
 import { queryAdminsList } from '@/services';
+import { PlusOutlined } from '@ant-design/icons';
 import { ProColumns, ProTable } from '@ant-design/pro-components';
 import { IAdmin } from '@nice-21day/shared';
-import { Space } from 'antd';
+import { history } from '@umijs/max';
+import { Button, Space } from 'antd';
 import React from 'react';
 
 const Admin: React.FC = () => {
@@ -43,11 +45,22 @@ const Admin: React.FC = () => {
       pagination={false}
       request={async () => {
         const res = queryAdminsList();
+        // TODO: 返回值包装
         return res;
       }}
       columns={columns}
       search={false}
       headerTitle="管理员列表"
+      toolBarRender={() => [
+        <Button
+          key="button"
+          icon={<PlusOutlined />}
+          type="primary"
+          onClick={() => history.push('/admin/create')}
+        >
+          新建
+        </Button>,
+      ]}
     />
   );
 };
