@@ -1,4 +1,4 @@
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined } from '@ant-design/icons';
 import {
   Button,
   Col,
@@ -10,26 +10,26 @@ import {
   Row,
   Select,
   Upload,
-} from "antd";
+} from 'antd';
 import {
   RcFile,
   UploadChangeParam,
   UploadFile,
   UploadProps,
-} from "antd/lib/upload";
-import { useMemo, useState } from "react";
-import html2canvas from "html2canvas";
-import templateImage from "../assets/template.jpeg";
-import styles from "./index.less";
+} from 'antd/lib/upload';
+import html2canvas from 'html2canvas';
+import { useMemo, useState } from 'react';
+import templateImage from './assets/template.jpeg';
+import styles from './index.less';
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result as string));
+  reader.addEventListener('load', () => callback(reader.result as string));
   reader.readAsDataURL(img);
 };
 
 /** 训练营类型 */
-const TRAINING_TYPE = ["学习训练营"];
+const TRAINING_TYPE = ['学习训练营'];
 
 interface IFormValue {
   /** 训练营名称 */
@@ -54,7 +54,6 @@ export default function HomePage() {
 
   const handleFormChange = (
     changedValues: Partial<IFormValue & { userAvatarUpload: any }>,
-    values: IFormValue
   ) => {
     const { userAvatarUpload, ...restValues } = changedValues;
     setFormValues((prevValues) => ({
@@ -65,30 +64,30 @@ export default function HomePage() {
 
   const handleCreateImage = (values: IFormValue) => {
     const imgName = `${values.userName}_21天${values.trainingName}第${values.trainingNo}期.jpg`;
-    html2canvas(document.getElementById("template")!).then((canvas) => {
-      let img = document.createElement("a");
+    html2canvas(document.getElementById('template')!).then((canvas) => {
+      let img = document.createElement('a');
       img.href = canvas
-        .toDataURL("image/jpeg")
-        .replace("image/jpeg", "image/octet-stream");
+        .toDataURL('image/jpeg')
+        .replace('image/jpeg', 'image/octet-stream');
       img.download = imgName;
       img.click();
     });
   };
 
   const beforeUpload = (file: RcFile) => {
-    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
-      message.error("只能上传 JPG/PNG 类型的图片");
+      message.error('只能上传 JPG/PNG 类型的图片');
     }
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
-      message.error("图片不能超过 2MB");
+      message.error('图片不能超过 2MB');
     }
     return false;
   };
 
-  const handleAvatarChange: UploadProps["onChange"] = (
-    info: UploadChangeParam<UploadFile>
+  const handleAvatarChange: UploadProps['onChange'] = (
+    info: UploadChangeParam<UploadFile>,
   ) => {
     getBase64(info.file as RcFile, (url) => {
       setFormValues((prevValues) => ({
@@ -101,19 +100,19 @@ export default function HomePage() {
   const metrics = useMemo(
     () => [
       {
-        label: "打卡天数",
+        label: '打卡天数',
         value: formValues.clockDays,
       },
       {
-        label: "总目标数",
+        label: '总目标数',
         value: formValues.totalTargetCount,
       },
       {
-        label: "总积分数",
+        label: '总积分数',
         value: formValues.totalPoints,
       },
     ],
-    [formValues.clockDays, formValues.totalTargetCount, formValues.totalPoints]
+    [formValues.clockDays, formValues.totalTargetCount, formValues.totalPoints],
   );
 
   return (
@@ -123,9 +122,9 @@ export default function HomePage() {
           {/* 模板图片 */}
           <img src={templateImage} />
           {/* 标题 */}
-          <div className={styles["training-title"]}>
-            21天{formValues.trainingName || "--"}第
-            {formValues.trainingNo || "--"}期
+          <div className={styles['training-title']}>
+            21天{formValues.trainingName || '--'}第
+            {formValues.trainingNo || '--'}期
           </div>
           {/* 学员信息 */}
           <div className={styles.user}>
@@ -137,11 +136,11 @@ export default function HomePage() {
           {/* 打卡指标 */}
           <div className={styles.result}>
             {metrics.map((metric) => (
-              <div key={metric.label} className={styles["result-metric"]}>
-                <div className={styles["result-metric__value"]}>
+              <div key={metric.label} className={styles['result-metric']}>
+                <div className={styles['result-metric__value']}>
                   {metric.value || 0}
                 </div>
-                <div className={styles["result-metric__label"]}>
+                <div className={styles['result-metric__label']}>
                   {metric.label}
                 </div>
               </div>
@@ -159,7 +158,7 @@ export default function HomePage() {
           <Form.Item
             name="trainingName"
             label="训练营"
-            rules={[{ required: true, message: "请选择训练营类型" }]}
+            rules={[{ required: true, message: '请选择训练营类型' }]}
           >
             <Select placeholder="请选择训练营类型">
               {TRAINING_TYPE.map((type) => (
@@ -172,20 +171,20 @@ export default function HomePage() {
           <Form.Item
             name="trainingNo"
             label="训练营期数"
-            rules={[{ required: true, message: "请输入训练营期数" }]}
+            rules={[{ required: true, message: '请输入训练营期数' }]}
           >
             <InputNumber
               min={1}
               max={999}
               placeholder="请输入训练营期数"
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             />
           </Form.Item>
           <Divider orientation="left">学员设置</Divider>
           <Form.Item
             name="userName"
             label="学员姓名"
-            rules={[{ required: true, message: "请输入学员姓名" }]}
+            rules={[{ required: true, message: '请输入学员姓名' }]}
           >
             <Input placeholder="请输入学员姓名" />
           </Form.Item>
@@ -193,7 +192,7 @@ export default function HomePage() {
             name="userAvatarUpload"
             label="学员头像"
             valuePropName="file"
-            rules={[{ required: true, message: "请上传学员头像" }]}
+            rules={[{ required: true, message: '请上传学员头像' }]}
           >
             <Upload
               name="avatar"
@@ -207,7 +206,7 @@ export default function HomePage() {
                 <img
                   src={formValues.userAvatar}
                   alt="avatar"
-                  style={{ height: "100%" }}
+                  style={{ height: '100%' }}
                 />
               ) : (
                 <div>
@@ -220,37 +219,37 @@ export default function HomePage() {
           <Form.Item
             name="clockDays"
             label="打卡天数"
-            rules={[{ required: true, message: "请输入打卡天数" }]}
+            rules={[{ required: true, message: '请输入打卡天数' }]}
           >
             <InputNumber
               min={0}
               max={21}
               placeholder="请输入打卡天数"
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             />
           </Form.Item>
           <Form.Item
             name="totalTargetCount"
             label="总目标数"
-            rules={[{ required: true, message: "请输入总目标数" }]}
+            rules={[{ required: true, message: '请输入总目标数' }]}
           >
             <InputNumber
               min={0}
               max={99}
               placeholder="请输入总目标数"
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             />
           </Form.Item>
           <Form.Item
             name="totalPoints"
             label="总积分"
-            rules={[{ required: true, message: "请输入总积分" }]}
+            rules={[{ required: true, message: '请输入总积分' }]}
           >
             <InputNumber
               min={0}
               max={99}
               placeholder="请输入总积分"
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             />
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 6 }}>

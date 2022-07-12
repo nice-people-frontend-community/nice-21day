@@ -5,19 +5,24 @@ export enum EState {
   Disable = 'disable',
 }
 
+/**
+ * 分页查询参数
+ */
+export interface IPageParams {
+  /** 从 1 开始 */
+  number: number;
+  size: number;
+}
+
 /** 分页封装器 */
-export interface IPageFactory<T> {
+export interface IPageFactory<T> extends IPageParams {
   rows: T[];
   total: number;
-  offset: number;
-  limit: number;
-  pageNumber?: number;
-  pageSize?: number;
 }
 
 /** ajax 封装好的返回值 */
 export interface IAjaxResponseFactory<T> {
-  status?: number;
   success: boolean;
-  result: T;
+  data: T;
+  message?: string;
 }
