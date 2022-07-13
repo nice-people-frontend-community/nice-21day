@@ -2,14 +2,21 @@
   "name": "nice-21day",
   "private": true,
   "scripts": {
-    "build:shared": "pnpm --filter=@nice-21day/shared build",
     "dev:web": "pnpm --filter=@nice-21day/web dev",
     "dev:weapp": "pnpm --filter=@nice-21day/mini dev:weapp",
+    "build:shared": "pnpm --filter=@nice-21day/shared build",
     "build:web": "pnpm --filter=@nice-21day/web build",
     "build:weapp": "pnpm --filter=@nice-21day/mini build:weapp"
   },
   "devDependencies": {
+    "chalk": "^4.1.2",
     "@types/node": "^18.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "typescript": "^4.1.2"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
   }
 }
