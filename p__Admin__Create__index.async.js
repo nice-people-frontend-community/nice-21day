@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_nice_21day_web=self.webpackChunk_nice_21day_web||[]).push([[386],{36908:function(d,e,n){n.r(e);var u=n(48902),a=function(){return(0,u.jsx)("p",{children:"\u65B0\u589Eadmin"})};e.default=a}}]);
