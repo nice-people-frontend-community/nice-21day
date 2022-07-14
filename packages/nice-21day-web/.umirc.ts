@@ -11,8 +11,8 @@ export default defineConfig({
     title: '训练营',
   },
   routes,
-  base: process.env.NODE_ENV === 'production' ? '/nice-21day/' : '/',
-  publicPath: process.env.NODE_ENV === 'production' ? '/nice-21day/' : '/',
+  // base: process.env.NODE_ENV === 'production' ? '/nice-21day-web/' : '/',
+  // publicPath: process.env.NODE_ENV === 'production' ? '/nice-21day-web/' : '/',
   npmClient: 'pnpm',
   proxy: {
     '/api': {
