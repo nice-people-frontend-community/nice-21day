@@ -28,5 +28,9 @@ export const request: RequestConfig = {
     errorThrower() {},
   },
   requestInterceptors: [],
-  responseInterceptors: [(response) => response],
+  responseInterceptors: [
+    (response) => {
+      return response;
+    },
+  ],
 };
