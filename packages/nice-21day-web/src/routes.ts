@@ -35,4 +35,16 @@ export default [
     icon: 'solution',
     component: './Certificate',
   },
+  {
+    name: '登录',
+    path: '/login',
+    component: './Login',
+    hideInMenu: true,
+  },
+  {
+    name: '注册',
+    path: '/register',
+    component: './register',
+    hideInMenu: true,
+  }
 ] as MenuDataItem[];
