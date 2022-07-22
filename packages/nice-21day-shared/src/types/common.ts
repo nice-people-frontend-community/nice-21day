@@ -5,6 +5,26 @@ export enum EState {
   Disable = 'disable',
 }
 
+export enum EAUDIT_STATE {
+  // 未审核
+  PENDING = 'pending',
+  // 审核通过
+  VALID = 'valid',
+  // 审核未通过
+  INVALID = 'invalid',
+}
+
+/**
+ * 是否携带用户详情
+ * 是否携带训练营详情
+ * 0 - false
+ * 1 - true
+ */
+export enum EIsCarryOtherInfo {
+  NO = 0,
+  YES = 1,
+}
+
 /**
  * 分页查询参数
  */

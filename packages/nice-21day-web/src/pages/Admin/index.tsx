@@ -44,7 +44,7 @@ const Admin: React.FC = () => {
       bordered
       pagination={false}
       request={async () => {
-        const res = queryAdminsList();
+        const res = await queryAdminsList();
         // TODO: 返回值包装
         return res;
       }}

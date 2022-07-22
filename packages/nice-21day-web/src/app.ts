@@ -1,7 +1,6 @@
 // 运行时配置
 
 import { BasicLayoutProps } from '@ant-design/pro-components';
-import { message } from 'antd';
 import { RequestConfig } from './.umi/exports';
 
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
@@ -29,15 +28,5 @@ export const request: RequestConfig = {
     errorThrower() {},
   },
   requestInterceptors: [],
-  responseInterceptors: [
-    (response) => {
-      // 拦截响应数据，进行个性化处理
-      const { data } = response;
-      // @ts-ignore
-      if (!data.success) {
-        message.error('请求失败！');
-      }
-      return response;
-    },
-  ],
+  responseInterceptors: [(response) => response],
 };

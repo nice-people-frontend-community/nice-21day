@@ -35,4 +35,10 @@ export default [
     icon: 'solution',
     component: './Certificate',
   },
+  {
+    name: '打卡记录管理',
+    path: '/attendance',
+    icon: 'solution',
+    component: './Attendance',
+  },
 ] as MenuDataItem[];
