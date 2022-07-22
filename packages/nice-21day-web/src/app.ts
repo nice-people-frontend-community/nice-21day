@@ -31,12 +31,6 @@ export const request: RequestConfig = {
   requestInterceptors: [],
   responseInterceptors: [
     (response) => {
-      // 拦截响应数据，进行个性化处理
-      const { data } = response;
-      // @ts-ignore
-      if (!data.success) {
-        message.error('请求失败！');
-      }
       return response;
     },
   ],
