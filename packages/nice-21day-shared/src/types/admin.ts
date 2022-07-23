@@ -1,4 +1,4 @@
-import { EState } from './common';
+import { EState } from './global';
 
 export interface IAdmin {
   id: string;

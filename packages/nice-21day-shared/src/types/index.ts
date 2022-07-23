@@ -1,4 +1,4 @@
 export * from './admin';
-export * from './common';
+export * from './global';
 export * from './attendance';
 export * from './training';

@@ -40,9 +40,11 @@ export interface IPageFactory<T> extends IPageParams {
   total: number;
 }
 
-/** ajax 封装好的返回值 */
-export interface IAjaxResponseFactory<T> {
-  success: boolean;
-  data: T;
-  message?: string;
+export interface ICurentUser {
+  id: string;
+  login_name: string;
+  nick_name: string;
+  role: 'admin' | 'user';
+  avatar?: string;
+  wechat_openid?: string;
 }

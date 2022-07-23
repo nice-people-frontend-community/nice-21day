@@ -1,6 +1,6 @@
 import { ITraining } from './training';
 import { IAdmin } from './admin';
-import { IPageParams } from './common';
+import { IPageParams } from './global';
 
 export interface IAttendanceItem {
   deleted: string;

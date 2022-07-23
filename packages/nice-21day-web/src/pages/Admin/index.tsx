@@ -44,9 +44,11 @@ const Admin: React.FC = () => {
       bordered
       pagination={false}
       request={async () => {
-        const res = await queryAdminsList();
-        // TODO: 返回值包装
-        return res;
+        const admins = await queryAdminsList();
+        return {
+          success: true,
+          data: admins,
+        };
       }}
       columns={columns}
       search={false}
