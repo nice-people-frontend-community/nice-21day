@@ -1,9 +1,39 @@
+import React from 'react';
+import { queryAttendanceList } from '@/services/attendance';
 import { ProColumns, ProTable } from '@ant-design/pro-components';
 import { EAttendanceLogAuditState, IAttendanceLog } from '@nice-21day/shared';
-import React from 'react';
-import { queryAttendanceList } from '../../services/attendance';
+import { Select, Spin } from 'antd';
+import { useGetNickNameList, useGetTrainingkNameList } from './hook';
 
 const Attendance: React.FC = () => {
+  const nickNameRef = React.useRef<number>();
+  const trainingNameRef = React.useRef<number>();
+  const { nickNameLoading, nickNameList, getNickNameList } =
+    useGetNickNameList();
+  const { trainingNameLoading, trainingNameList, getTrainingNameList } =
+    useGetTrainingkNameList();
+  const handleNickNameChange = (value: string) => {
+    if (nickNameRef.current) {
+      clearTimeout(nickNameRef.current);
+    }
+    nickNameRef.current = window.setTimeout(() => {
+      if (value) {
+        getNickNameList(value);
+      }
+    }, 800);
+  };
+
+  const handleTrainingNameChange = (value: string) => {
+    if (trainingNameRef.current) {
+      clearTimeout(trainingNameRef.current);
+    }
+    trainingNameRef.current = window.setTimeout(() => {
+      if (value) {
+        getTrainingNameList(value);
+      }
+    }, 800);
+  };
+
   const columns: ProColumns<IAttendanceLog>[] = [
     {
       title: '用户名称',
@@ -19,6 +49,25 @@ const Attendance: React.FC = () => {
       dataIndex: 'nick_name',
       hideInTable: true,
       valueType: 'select',
+      renderFormItem: () => {
+        return (
+          <Select
+            showSearch
+            allowClear
+            loading={nickNameLoading}
+            onSearch={handleNickNameChange}
+            notFoundContent={
+              nickNameLoading ? <Spin size="small" /> : '未查询到内容'
+            }
+          >
+            {nickNameList.map((item) => (
+              <Select.Option key={item.id} value={item.nick_name}>
+                {item.nick_name}
+              </Select.Option>
+            ))}
+          </Select>
+        );
+      },
     },
     {
       title: '训练营',
@@ -26,6 +75,25 @@ const Attendance: React.FC = () => {
       valueType: 'select',
       render: (_, record) => {
         return record.training?.name || record.training_id;
+      },
+      renderFormItem: () => {
+        return (
+          <Select
+            showSearch
+            allowClear
+            loading={trainingNameLoading}
+            onSearch={handleTrainingNameChange}
+            notFoundContent={
+              trainingNameLoading ? <Spin size="small" /> : '未查询到内容'
+            }
+          >
+            {trainingNameList.map((item) => (
+              <Select.Option key={item.id} value={item.name}>
+                {item.name}
+              </Select.Option>
+            ))}
+          </Select>
+        );
       },
     },
     {
