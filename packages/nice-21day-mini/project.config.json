@@ -2,7 +2,7 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "nice-21day-mini",
 	"description": "nice-21day-mini",
-	"appid": "touristappid",
+	"appid": "wx769bbfcf9c406144",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
