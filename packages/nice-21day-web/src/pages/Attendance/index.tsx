@@ -1,17 +1,25 @@
 import React from 'react';
-import { queryAttendanceList } from '@/services/attendance';
+import { queryAttendanceListAPI } from '@/services/attendance';
 import { ProColumns, ProTable } from '@ant-design/pro-components';
 import { EAttendanceLogAuditState, IAttendanceLog } from '@nice-21day/shared';
-import { Select, Spin } from 'antd';
-import { useGetNickNameList, useGetTrainingkNameList } from './hook';
+import { Button, Select, Spin } from 'antd';
+import {
+  useGetNickNameList,
+  useGetTrainingkNameList,
+  useChangeAttendanceAuditState,
+} from './hook';
 
 const Attendance: React.FC = () => {
   const nickNameRef = React.useRef<number>();
   const trainingNameRef = React.useRef<number>();
   const { nickNameLoading, nickNameList, getNickNameList } =
     useGetNickNameList();
+
   const { trainingNameLoading, trainingNameList, getTrainingNameList } =
     useGetTrainingkNameList();
+
+  const { changeAttendanceAuditState } = useChangeAttendanceAuditState();
+
   const handleNickNameChange = (value: string) => {
     if (nickNameRef.current) {
       clearTimeout(nickNameRef.current);
@@ -32,6 +40,13 @@ const Attendance: React.FC = () => {
         getTrainingNameList(value);
       }
     }, 800);
+  };
+
+  const handleChangeAuditState = (
+    id: string,
+    state: EAttendanceLogAuditState,
+  ) => {
+    changeAttendanceAuditState(id, state);
   };
 
   const columns: ProColumns<IAttendanceLog>[] = [
@@ -151,6 +166,29 @@ const Attendance: React.FC = () => {
       title: '操作',
       dataIndex: 'operate',
       valueType: 'option',
+      render: (_, record) => (
+        <>
+          <Button
+            type="link"
+            onClick={() =>
+              handleChangeAuditState(record.id, EAttendanceLogAuditState.Valid)
+            }
+          >
+            审核通过
+          </Button>
+          <Button
+            type="link"
+            onClick={() =>
+              handleChangeAuditState(
+                record.id,
+                EAttendanceLogAuditState.Invalid,
+              )
+            }
+          >
+            审核未通过
+          </Button>
+        </>
+      ),
     },
   ];
   return (
@@ -161,7 +199,7 @@ const Attendance: React.FC = () => {
       rowKey="id"
       search={{ collapsed: false }}
       request={async ({ pageSize, current, ...rest }) => {
-        const res = await queryAttendanceList({
+        const res = await queryAttendanceListAPI({
           ...rest,
           size: pageSize!,
           number: current!,
