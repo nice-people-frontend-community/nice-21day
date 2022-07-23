@@ -1,26 +1,35 @@
+import { EBooleanString, IPageParams } from './global';
 import { ITraining } from './training';
-import { IAdmin } from './admin';
-import { IPageParams } from './global';
+import { IUser } from './user';
 
-export interface IAttendanceItem {
-  deleted: string;
+export interface IAttendanceLog {
+  id: string;
+  user_id: string;
+  user?: IUser;
+  training_id: string;
+  training?: ITraining;
+  attendance_date: string;
+  attendance_tasks: string;
+  audit_state: string;
   description: string;
   created_at: string;
   updated_at: string;
-  user_id: string;
-  training_id: string;
-  attendance_tasks: string;
-  attendance_date: string;
-  audit_state: string;
-  user: IAdmin;
-  training: ITraining;
 }
 
-export interface IAttendanceRequest extends IPageParams {
+export enum EAttendanceLogAuditState {
+  // 未审核
+  Pending = 'pending',
+  // 审核通过
+  Valid = 'valid',
+  // 审核未通过
+  Invalid = 'invalid',
+}
+
+export interface IQueryAttendanceParams extends IPageParams {
   user_id?: string;
   training_id?: string;
   attendance_date?: string;
-  audit_state?: string;
-  with_training?: number;
-  with_user?: number;
+  audit_state?: EAttendanceLogAuditState;
+  with_training?: EBooleanString;
+  with_user?: EBooleanString;
 }

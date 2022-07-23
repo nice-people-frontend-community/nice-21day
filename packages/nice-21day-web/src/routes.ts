@@ -37,15 +37,15 @@ export default [
     ],
   },
   {
+    name: '打卡记录',
+    path: '/attendance',
+    icon: 'solution',
+    component: './Attendance',
+  },
+  {
     name: '证书',
     path: '/certificate',
     icon: 'solution',
     component: './Certificate',
-  },
-  {
-    name: '打卡记录管理',
-    path: '/attendance',
-    icon: 'solution',
-    component: './Attendance',
   },
 ] as MenuDataItem[];
