@@ -4,6 +4,7 @@
   "scripts": {
     "dev:web": "pnpm --filter=@nice-21day/web dev",
     "dev:weapp": "pnpm --filter=@nice-21day/mini dev:weapp",
+    "dev:shared": "pnpm --filter=@nice-21day/shared dev",
     "build:shared": "pnpm --filter=@nice-21day/shared build",
     "build:web": "pnpm --filter=@nice-21day/web build",
     "build:weapp": "pnpm --filter=@nice-21day/mini build:weapp"
