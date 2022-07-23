@@ -1,7 +1,7 @@
+import { queryAttendanceList } from '@/services/attendance';
 import { ProColumns, ProTable } from '@ant-design/pro-components';
 import { EAttendanceLogAuditState, IAttendanceLog } from '@nice-21day/shared';
 import React from 'react';
-import { queryAttendanceList } from '../../services/attendance';
 
 const Attendance: React.FC = () => {
   const columns: ProColumns<IAttendanceLog>[] = [
