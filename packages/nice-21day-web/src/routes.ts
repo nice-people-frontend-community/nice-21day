@@ -2,6 +2,13 @@ import { MenuDataItem } from '@ant-design/pro-components';
 
 export default [
   {
+    name: '登录',
+    path: '/login',
+    component: './Login',
+    hideInMenu: true,
+    layout: false,
+  },
+  {
     path: '/',
     redirect: '/admin',
   },
@@ -41,16 +48,4 @@ export default [
     icon: 'solution',
     component: './Attendance',
   },
-  {
-    name: '登录',
-    path: '/login',
-    component: './Login',
-    hideInMenu: true,
-  },
-  {
-    name: '注册',
-    path: '/register',
-    component: './register',
-    hideInMenu: true,
-  }
 ] as MenuDataItem[];

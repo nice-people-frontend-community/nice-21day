@@ -5,12 +5,7 @@ import { request } from '@umijs/max';
  * 获取管理员分页列表
  */
 export const queryAdminsList = async () => {
-  return await request('/admins', {
-    params: {
-      page: 1,
-      size: 10,
-    }
-  });
+  return await request('/admins');
 };
 
 /**
