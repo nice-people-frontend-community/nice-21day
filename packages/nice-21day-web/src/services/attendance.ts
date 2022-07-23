@@ -19,5 +19,5 @@ export const changeAttendanceAuditStateAPI = async (
 ) =>
   await request(`/user-attendance-logs/${id}/audit-state`, {
     method: 'PUT',
-    params: { audit_state },
+    data: { audit_state },
   });
