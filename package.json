@@ -7,7 +7,8 @@
     "dev:web": "pnpm --filter=@nice-21day/web dev",
     "build:web": "pnpm --filter=@nice-21day/web build",
     "dev:weapp": "pnpm --filter=@nice-21day/mini dev:weapp",
-    "build:weapp": "pnpm --filter=@nice-21day/mini build:weapp"
+    "build:weapp": "pnpm --filter=@nice-21day/mini build:weapp",
+    "postinstall": "pnpm run build:shared"
   },
   "devDependencies": {
     "chalk": "^4.1.2",
