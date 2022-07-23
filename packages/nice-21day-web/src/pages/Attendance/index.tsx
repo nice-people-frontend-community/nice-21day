@@ -92,16 +92,12 @@ const Attendance: React.FC = () => {
       columns={columns}
       rowKey="id"
       search={{ collapsed: false }}
-      request={async (params) => {
-        const queryParams = {
-          ...params,
-          size: params.pageSize!,
-          number: params.current!,
-        };
-        delete queryParams.pageSize;
-        delete queryParams.current;
-
-        const res = await queryAttendanceList(queryParams);
+      request={async ({ pageSize, current, ...rest }) => {
+        const res = await queryAttendanceList({
+          ...rest,
+          size: pageSize!,
+          number: current!,
+        });
         return {
           data: res.rows,
           total: res.total,
