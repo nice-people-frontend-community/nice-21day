@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { message } from 'antd';
+import { ActionType } from '@ant-design/pro-components';
 import { IUser, ITraining, EAttendanceLogAuditState } from '@nice-21day/shared';
 import {
-  queryAttendanceListAPI,
   queryAllNickNameList,
   queryAllTrainingNameList,
   changeAttendanceAuditStateAPI,
@@ -54,13 +54,13 @@ export const useChangeAttendanceAuditState = () => {
   const changeAttendanceAuditState = async (
     id: string,
     state: EAttendanceLogAuditState,
+    actionRef: React.MutableRefObject<ActionType | undefined>,
   ) => {
     try {
       const res = await changeAttendanceAuditStateAPI(id, state);
       if (res) {
-        console.log(res, 'res');
         message.success('操作成功');
-        queryAttendanceListAPI({ size: 20, number: 1 });
+        actionRef.current?.reload();
       }
     } catch (err) {
       message.error('操作失败');
