@@ -33,7 +33,7 @@ export default [
         name: '编辑管理员',
         path: '/admin/update',
         component: './Admin/Update',
-      }
+      },
     ],
   },
   {
@@ -47,7 +47,7 @@ export default [
     path: '/member',
     icon: 'skin',
     component: './Member',
-  }，
+  },
   {
     name: '积分变更记录',
     path: '/integral',
@@ -75,7 +75,7 @@ export default [
         name: '新增训练营',
         path: '/campList/edit',
         component: './campList/campConfig',
-      }
-    ]
+      },
+    ],
   },
 ] as MenuDataItem[];
