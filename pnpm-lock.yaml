@@ -9,6 +9,9 @@ importers:
       husky: ^8.0.1
       lint-staged: ^13.0.3
       typescript: ^4.1.2
+      umi-request: ^1.4.0
+    dependencies:
+      umi-request: 1.4.0
     devDependencies:
       '@types/node': 18.0.0
       chalk: 4.1.2
@@ -15295,7 +15298,6 @@ packages:
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.0.4
-    dev: true
 
   /qs/6.5.3:
     resolution: {integrity: sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==}
@@ -18840,6 +18842,13 @@ packages:
       commander: 2.19.0
       source-map: 0.6.1
     dev: true
+
+  /umi-request/1.4.0:
+    resolution: {integrity: sha512-OknwtQZddZHi0Ggi+Vr/olJ7HNMx4AzlywyK0W3NZBT7B0stjeZ9lcztA85dBgdAj3KVk8uPJPZSnGaDjELhrA==}
+    dependencies:
+      isomorphic-fetch: 2.2.1
+      qs: 6.10.3
+    dev: false
 
   /umi/4.0.6_ezru4k2n3muhkw564gziwmge4q:
     resolution: {integrity: sha512-WLXAJfM3CSnYBhHj8CigycDOEHRrGOTZmGpwmfTezQpp0BoWX61FLEdidL3rx5ZDyt9Lr4QQScY7ILdteEkdsw==}

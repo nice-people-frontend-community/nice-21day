@@ -43,6 +43,12 @@ export default [
     component: './Attendance',
   },
   {
+    name: '训练营成员',
+    path: '/member',
+    icon: 'skin',
+    component: './Member',
+  }，
+  {
     name: '积分变更记录',
     path: '/integral',
     icon: 'solution',
