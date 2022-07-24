@@ -1,1 +1,1 @@
-export const LOGIN = '/auth/wechat/login'
+export const LOGIN = '/auth/wechat/login';
