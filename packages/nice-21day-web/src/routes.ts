@@ -43,6 +43,12 @@ export default [
     component: './Attendance',
   },
   {
+    name: '积分变更记录',
+    path: '/integral',
+    icon: 'solution',
+    component: './Integral',
+  },
+  {
     name: '证书',
     path: '/certificate',
     icon: 'solution',
