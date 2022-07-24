@@ -261,6 +261,7 @@ const Member: React.FC = () => {
                 scroll={{ x: 1000 }}
                 search={{
                     labelWidth: 100,
+                    defaultCollapsed: false,
                 }}
                 pagination={{
                     pageSize: 10,
