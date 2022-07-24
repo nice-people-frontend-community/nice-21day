@@ -33,7 +33,7 @@ export default [
         name: '编辑管理员',
         path: '/admin/update',
         component: './Admin/Update',
-      },
+      }
     ],
   },
   {
@@ -47,5 +47,23 @@ export default [
     path: '/certificate',
     icon: 'solution',
     component: './Certificate',
+  },
+  {
+    name: '训练营管理',
+    path: '/campList',
+    icon: 'solution',
+    hideChildrenInMenu: true,
+    routes: [
+      {
+        name: '训练营管理',
+        path: '/campList',
+        component: './campList',
+      },
+      {
+        name: '新增训练营',
+        path: '/campList/edit',
+        component: './campList/campConfig',
+      }
+    ]
   },
 ] as MenuDataItem[];
