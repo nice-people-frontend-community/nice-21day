@@ -11,8 +11,8 @@
     "postinstall": "pnpm run build:shared"
   },
   "devDependencies": {
-    "chalk": "^4.1.2",
     "@types/node": "^18.0.0",
+    "chalk": "^4.1.2",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "typescript": "^4.1.2"
@@ -20,5 +20,8 @@
   "gitHooks": {
     "pre-commit": "lint-staged",
     "commit-msg": "node scripts/verifyCommit.js"
+  },
+  "dependencies": {
+    "umi-request": "^1.4.0"
   }
 }
