@@ -50,7 +50,6 @@ export const request: RequestConfig = {
       // 没有登录请求，并且没有 token 的时候直接进入登录页面
       if (config.url.indexOf('/admin/login') === -1 && !token) {
         history.push('/login');
-        return;
       }
 
       // 禁止缓存
