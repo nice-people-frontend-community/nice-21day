@@ -1,6 +1,6 @@
 import React from 'react';
 import { queryAttendanceListAPI } from '@/services/attendance';
-import { ProColumns, ProTable } from '@ant-design/pro-components';
+import { ProColumns, ProTable, ActionType } from '@ant-design/pro-components';
 import { EAttendanceLogAuditState, IAttendanceLog } from '@nice-21day/shared';
 import { Button, Select, Spin } from 'antd';
 import {
@@ -12,6 +12,7 @@ import {
 const Attendance: React.FC = () => {
   const nickNameRef = React.useRef<number>();
   const trainingNameRef = React.useRef<number>();
+  const actionRef = React.useRef<ActionType>();
   const { nickNameLoading, nickNameList, getNickNameList } =
     useGetNickNameList();
 
@@ -46,7 +47,7 @@ const Attendance: React.FC = () => {
     id: string,
     state: EAttendanceLogAuditState,
   ) => {
-    changeAttendanceAuditState(id, state);
+    changeAttendanceAuditState(id, state, actionRef);
   };
 
   const columns: ProColumns<IAttendanceLog>[] = [
@@ -197,6 +198,7 @@ const Attendance: React.FC = () => {
       headerTitle="打卡记录列表"
       columns={columns}
       rowKey="id"
+      actionRef={actionRef}
       search={{ collapsed: false }}
       request={async ({ pageSize, current, ...rest }) => {
         const res = await queryAttendanceListAPI({
