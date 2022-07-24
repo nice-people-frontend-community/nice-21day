@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { message } from 'antd';
-import { ActionType } from '@ant-design/pro-components';
-import { IUser, ITraining, EAttendanceLogAuditState } from '@nice-21day/shared';
+import { IUser, ITraining } from '@nice-21day/shared';
 import {
   queryAllNickNameList,
-  queryAllTrainingNameList,
-  changeAttendanceAuditStateAPI,
+  queryAllTrainingNameList
 } from '../../services';
 
 export const useGetNickNameList = () => {
@@ -48,23 +46,4 @@ export const useGetTrainingkNameList = () => {
     trainingNameList,
     getTrainingNameList,
   };
-};
-
-export const useChangeAttendanceAuditState = () => {
-  const changeAttendanceAuditState = async (
-    id: string,
-    state: EAttendanceLogAuditState,
-    actionRef: React.MutableRefObject<ActionType | undefined>,
-  ) => {
-    try {
-      const res = await changeAttendanceAuditStateAPI(id, state);
-      if (res) {
-        message.success('操作成功');
-        actionRef.current?.reload();
-      }
-    } catch (err) {
-      message.error('操作失败');
-    }
-  };
-  return { changeAttendanceAuditState };
 };
